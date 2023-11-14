@@ -82,7 +82,8 @@ document.addEventListener("DOMContentLoaded", () => {
         console.error(data.error);
     });
     // Realiza una solicitud para obtener los datos desde MongoDB Atlas
-    fetch('http://localhost:3000/obtenerP' && 'https://2fc60p1f-3000.usw3.devtunnels.ms/obtenerP')
+    // && 'https://2fc60p1f-3000.usw3.devtunnels.ms/obtenerP'
+    fetch('http://localhost:3000/obtenerP' )
         .then((response) => response.json())
         .then((data) => {
             const dataContainer = document.getElementById("data-container");
@@ -124,9 +125,13 @@ document.addEventListener("DOMContentLoaded", () => {
                 movement.textContent = `Movimiento: ${item.movement}`;
                 dataItem.appendChild(movement);
 
-                const fechaHora = document.createElement("p");
-                fechaHora.textContent = `Fecha: ${item.day} Hora: ${item.time}`;
-                dataItem.appendChild(fechaHora);
+                const fecha = document.createElement("p");
+                fecha.textContent = `Fecha: ${item.day} `;
+                dataItem.appendChild(fecha);
+
+                const Hora = document.createElement("p");
+                Hora.textContent = ` Hora: ${item.time}`;
+                dataItem.appendChild(Hora);
 
                 dataContainer.appendChild(dataItem);
             });

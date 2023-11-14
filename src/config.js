@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const path = require('path');
 
 require('dotenv').config();
 
@@ -23,10 +24,12 @@ connection.once('open', () => {
 });
 
 app.use(bodyParser.json());
-app.use('/actividadVI', express.static(__dirname + '/../public'));
+app.use(express.static(path.join(__dirname, 'public')));
+app.use('/allDocs', express.static(__dirname + '/../public'));
 app.use('/dataDB', express.static(__dirname + '/../public/Views'));
-app.use('/Js', express.static(__dirname + '/../public/Js'));
+app.use('/JS', express.static(__dirname + '/../public/JS'));
 app.use('/IMG', express.static(__dirname + '/../public/IMG'));
+app.use('/CSS', express.static(__dirname + '/../public/CSS'));
 app.use(cors());
 
 module.exports = { app, port };

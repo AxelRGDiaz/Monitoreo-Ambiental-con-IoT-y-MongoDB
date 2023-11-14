@@ -9,19 +9,18 @@ const { ProyectoModel } = require('./models');
 const nomA = 'Axel Ramon Guerrero Diaz';
 // Ruta para la página de inicio
 router.get('/', (req, res) => {
-  res.send(`<h1>Hola mi nombre es: ${nomA}</h1>`);
-  console.log('Hola mi nombre es:', nomA);
+  res.sendFile('index.html', {root: __dirname + '/../public/'})
 });
 
 // Ruta para la página de ActividadVI
-router.get('/actividadVI', (req, res) => {
-  res.sendFile(__dirname + '/../public/index.html');
+router.get('/allDoc', (req, res) => {
+  res.sendFile('views/allDoc.html', { root: __dirname + '/../public/' });
 });
 
-// Ruta para la página de dataDB
 router.get('/dataDB', (req, res) => {
-  res.sendFile(__dirname + '/../public/Views/dataDB.html');
-  console.log('Hola');
+  res.sendFile('views/dataDB.html', { root: __dirname + '/../public/' });
+  const socket = req.app.io;
+  socket.emit('joinDataDB');
 });
 
 // Ruta para obtener documentos de la colección "Proyecto"
@@ -54,6 +53,26 @@ router.post('/agregarP', async (req, res) => {
     res.status(500).json({ error: 'Error al agregar el documento' });
   }
 });
+
+
+// Ruta para obtener el último documento de la colección "Proyecto"
+router.get('/obtenerUltimoDocumento', async (req, res) => {
+  try {
+    // Obtener el último documento ordenando por _id de forma descendente y tomando el primero
+    const ultimoDocumento = await ProyectoModel.findOne().sort({ _id: -1 });
+
+    if (ultimoDocumento) {
+      res.json(ultimoDocumento);
+    } else {
+      res.status(404).json({ error: 'No hay documentos en la colección' });
+    }
+  } catch (error) {
+    console.error('Error al obtener el último documento:', error);
+    res.status(500).json({ error: 'Error al obtener el último documento' });
+  }
+});
+
+
 // Ruta para editar un documento por _id en la colección "Proyecto"
 router.put('/editarP/:id', async (req, res) => {
   const { id } = req.params;
