@@ -1,6 +1,14 @@
+/* Extra Classes */
+.no-margin {
+	margin: 0;
+}
+
+.no-padding {
+	padding: 0;
+}
 body {
     font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
+    background-color: #f0f0f0bc;
     margin: 0;
     padding: 0;
     font-weight: bold;
@@ -23,35 +31,308 @@ body::before {
     opacity: 0.2;
 }
 
-header {
-    background-color: #000000;
-    color: #fff;
-    text-align: center;
-    padding: 20px 0;
-    font-weight: bold;
+h1{
+	color: #FFF;
+	font-weight: bold;
 }
-/* Estilo personalizado para los enlaces */
-a {
-    color: inherit; /* Hereda el color del texto del elemento padre */
-    text-decoration: none; /* Elimina la decoración de subrayado */
-  }
-  
-  /* Estilo para los enlaces cuando se colocan sobre ellos (hover) */
-  a:hover {
-    text-decoration: underline; /* Añade subrayado al pasar el mouse */
-  }
-  
-  /* Estilo para los elementos <u> */
-u {
-    text-decoration: none; /* Elimina la decoración de subrayado */
-  }
 
+/* Menu */
+header {
+	position:fixed;
+	top:0;
+	left:0;
+	right:0;
+	width:100%;
+	background:#000000;
+	height:60px;
+	z-index:9999;
+	text-align: center;
+}
+
+header.scrolled {
+	box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 20px 0px;
+}
+
+header nav {
+	clear:both;
+	display: block;
+	line-height: 60px;
+	height:60px;
+	position:relative;
+}
+
+.menu-container {
+	padding-left:30px;
+	padding-right:30px;
+}
+
+.grt-menu-row {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+a.grt-logo {
+	display:inline-block;
+	text-decoration: none;
+}
+
+a.grt-logo h1 {
+	max-height: 60px;
+    width: auto;
+	size: 100px;
+	text-decoration: none;
+}
+
+.grt-mobile-button {
+	display:none;
+}
+
+.grt-mobile-button:focus {
+	border:0;
+	outline:0;
+}
+
+.body-overflow {
+	overflow:hidden;
+}
+
+ul.grt-menu {
+	display: block;
+	float:right;
+	margin:0 -10px 0 0;
+	padding:0;
+	list-style-type: none;
+}
+
+ul.grt-menu:after {
+	content:"";
+	clear:both;
+	display:block;
+}
+
+ul.grt-menu li {
+	display: inline-block;
+	margin:0;
+	padding:0;
+	-webkit-transition: all ease 0.8s;
+	-moz-transition: all ease 0.8s;
+	transition: all ease 0.8s;
+}
+
+ul.grt-menu li a {
+	padding: 5px 12px;
+	font-size:21px;
+	display: inline-block;
+	color:#ffffff;
+	line-height: 1.1em;
+	box-shadow: inset 0 0 0 0 #FFF;
+	-webkit-transition: all ease 0.8s;
+	-moz-transition: all ease 0.8s;
+	transition: all ease 0.8s;
+	position:relative;
+	text-decoration: none;
+}
+.grt-menu-row h1 {
+    margin-top: 10px; /* Puedes ajustar este valor según sea necesario */
+}
+
+ul.grt-menu li.active a:after  {
+    position: absolute;
+    bottom: 1px;
+    content: "";
+    left: 12px;
+    right: 12px;
+    border-bottom: 2px solid #000000;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+      to { opacity: 1; }
+}
+
+ul.grt-menu li.grt-dropdown:hover {
+	cursor:pointer;
+}
+
+ul.grt-menu li.grt-dropdown:hover a {
+	box-shadow: none;
+}
+
+ul.grt-menu li.grt-dropdown ul.grt-dropdown-list {
+	display:none;
+	position:absolute;
+	background:#000000;
+	margin: 0;
+	padding: 0;
+	min-width:150px;
+	animation: fadeIn 0.8s;
+	z-index: 999;
+}
+
+ul.grt-menu li.grt-dropdown ul.grt-dropdown-list li a {
+	display:block;
+	font-size:18px;
+	color: #ffffff;
+	-webkit-transition: all ease 0.8s;
+	-moz-transition: all ease 0.8s;
+	transition: all ease 0.8s;
+	padding: 9px 12px;
+}
+
+ul.grt-menu li.grt-dropdown ul.grt-dropdown-list li:last-child a {
+	padding-bottom:15px;
+}
+
+ul.grt-menu li.grt-dropdown.active-dropdown {
+	background: #ffffff;
+}
+
+ul.grt-menu li.grt-dropdown.active-dropdown ul.grt-dropdown-list {
+	display:block !important;
+}
+
+ul.grt-menu li.grt-dropdown.active-dropdown a {
+	color:#000000;
+}
+
+
+/* Desktop only style */
+@media (min-width:768px) {
+
+	ul.grt-menu li.grt-dropdown:hover > a + ul.grt-dropdown-list {
+		display:block;
+		top: calc(100% - 17px);
+	}
+
+	ul.grt-menu li.grt-dropdown ul.grt-dropdown-list li {
+		display:block;
+	}
+
+	ul.grt-menu li.grt-dropdown:hover > a {
+		color:#000000;
+		box-shadow: inset 150px 0 0 0 #ffffff;
+	}
+
+	ul.grt-menu li a:hover {
+		color:#000000;
+		box-shadow: inset 150px 0 0 0 #ffffff;
+	}
+}
+
+/* Tablet only style */
+@media (min-width:768px) and (max-width:991px) {
+	ul.grt-menu li a {
+		font-size:18px;
+	}
+}
+
+/* Mobile only style */
+@media (max-width:767px) {
+
+	.menu-container {
+		padding-left: 15px;
+		padding-right: 15px;
+	}
+
+	.grt-mobile-button {
+		display:inline-block;
+		position:absolute;
+		right:0;
+		top:10px;
+		background:#000000;
+		color:#000000;
+		margin:0;
+		padding:0;
+		cursor:pointer;
+		border: 0;
+		width:35px;
+	}
+
+	.grt-mobile-button .line1, .grt-mobile-button .line2, .grt-mobile-button .line3 {
+		width: 35px;
+		height: 4px;
+		background-color: #ffffff;
+		margin: 6px 0;
+		transition: 0.4s;
+		display:block;
+	}
+
+	ul.grt-menu {
+		display:none;
+		margin:0;
+  		height: 0;
+	}  
+
+	ul.open-grt-menu {
+		position: fixed;
+		background: #000000;
+		width: 100%;
+		left: 0;
+		right: 0;
+		top: 0;
+		height:100%;
+		float: none;
+		display: flex;
+		justify-content: center;
+		flex-direction: column;
+		text-align: center;
+	}
+
+	.grt-mobile-button-open {
+		position: fixed;
+		z-index:99999;
+		right:25px;
+		top:25px;
+	}
+
+	.grt-mobile-button-open .line1 {
+		-webkit-transform: rotate(-45deg) translate(-8px, 5px);
+		transform: rotate(-45deg) translate(-8px, 5px);
+	}
+
+	.grt-mobile-button-open .line2 {opacity: 0;}
+	
+	.grt-mobile-button-open .line3 {
+		-webkit-transform: rotate(45deg) translate(-8px, -7px);
+		transform: rotate(45deg) translate(-8px, -7px);
+	}
+
+	ul.grt-menu li {
+		display: block;
+		line-height: 3.5em;
+	}
+
+	ul.grt-menu li a {
+		padding: 6px 10px;
+		font-size:30px;
+	}
+
+	ul.grt-menu li.grt-dropdown ul.grt-dropdown-list {
+		width:100%;
+		position: relative;
+		display:none;
+	}
+
+	ul.grt-menu li.grt-dropdown ul.grt-dropdown-list li a {
+		display: block;
+		font-size: 17px;
+	}
+}
+#map {
+	height: 600px;
+	width: 100%;
+	max-width: 1000px;
+    margin: 20px auto;
+	margin-top: 60px; /* Ajusta este valor según sea necesario */
+}
 .container {
     max-width: 800px;
     margin: 20px auto;
     background-color: #fff;
     padding: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	margin-top: 60px; /* Ajusta este valor según sea necesario */
 }
 
 .data-item {

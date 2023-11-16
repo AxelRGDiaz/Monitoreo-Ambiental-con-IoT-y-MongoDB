@@ -27,6 +27,9 @@ app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/allDocs', express.static(__dirname + '/../public'));
 app.use('/dataDB', express.static(__dirname + '/../public/Views'));
+app.use('/maps', express.static(__dirname + '/../public/Views'));
+
+
 app.use('/JS', express.static(__dirname + '/../public/JS'));
 app.use('/IMG', express.static(__dirname + '/../public/IMG'));
 app.use('/CSS', express.static(__dirname + '/../public/CSS'));
