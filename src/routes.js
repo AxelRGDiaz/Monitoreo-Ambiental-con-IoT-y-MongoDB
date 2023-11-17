@@ -6,7 +6,6 @@ const mqttClient = require('./mqttHandler');
 
 // Importa los modelos de Mongoose desde models.js
 const { ProyectoModel } = require('./models');
-const nomA = 'Axel Ramon Guerrero Diaz';
 // Ruta para la página de inicio
 router.get('/', (req, res) => {
   res.sendFile('index.html', {root: __dirname + '/../public/'})
@@ -22,6 +21,17 @@ router.get('/maps', (req, res) => {
   res.sendFile('views/maps.html', { root: __dirname + '/../public/' });
 });
 
+// Ruta para la página del equipo
+router.get('/team', (req, res) => {
+  res.sendFile('views/team.html', { root: __dirname + '/../public/' });
+});
+
+// Ruta para la página de wokwi
+router.get('/wokwi', (req, res) => {
+  res.sendFile('views/wokwi.html', { root: __dirname + '/../public/' });
+});
+
+// Ruta para la página de el dato mas reciente
 router.get('/dataDB', (req, res) => {
   res.sendFile('views/dataDB.html', { root: __dirname + '/../public/' });
   const socket = req.app.io;

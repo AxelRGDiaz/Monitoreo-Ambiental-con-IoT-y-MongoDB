@@ -83,7 +83,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
     // Realiza una solicitud para obtener los datos desde MongoDB Atlas
     // && 'https://2fc60p1f-3000.usw3.devtunnels.ms/obtenerP'
-    fetch('http://localhost:3000/obtenerP' && 'https://2fc60p1f-3000.usw3.devtunnels.ms/obtenerP')
+    fetch('http://localhost:3000/obtenerP')
         .then((response) => response.json())
         .then((data) => {
             const dataContainer = document.getElementById("data-container");

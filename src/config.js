@@ -26,8 +26,10 @@ connection.once('open', () => {
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/allDocs', express.static(__dirname + '/../public'));
+app.use('/team', express.static(__dirname + '/../public/Views'));
 app.use('/dataDB', express.static(__dirname + '/../public/Views'));
 app.use('/maps', express.static(__dirname + '/../public/Views'));
+app.use('/wokwi', express.static(__dirname + '/../public/Views'));
 
 
 app.use('/JS', express.static(__dirname + '/../public/JS'));

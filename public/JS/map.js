@@ -19,9 +19,14 @@
 
            // Crear un InfoWindow con el título
            var infoWindow = new google.maps.InfoWindow({
-              content: 'Sistema de monitoreo ambiental',
+              content: `<a href="/allDoc"><label>Sistema de monitoreo</label></a>`,
               pixelOffset: new google.maps.Size(0, -30) // Ajusta la posición vertical del InfoWindow
           });
+           // Agregar un evento de clic al marcador
+           marker.addListener('click', function() {
+            // Redirigir a la URL deseada al hacer clic en el marcador
+            window.location.href = '/allDoc';
+        });
 
           // Mostrar el InfoWindow cuando se carga el mapa
           infoWindow.open(map, marker);
