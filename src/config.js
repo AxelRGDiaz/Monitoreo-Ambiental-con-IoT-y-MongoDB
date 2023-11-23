@@ -30,6 +30,7 @@ app.use('/team', express.static(__dirname + '/../public/Views'));
 app.use('/dataDB', express.static(__dirname + '/../public/Views'));
 app.use('/maps', express.static(__dirname + '/../public/Views'));
 app.use('/wokwi', express.static(__dirname + '/../public/Views'));
+app.use('/grafica', express.static(__dirname + '/../public/Views'));
 
 
 app.use('/JS', express.static(__dirname + '/../public/JS'));

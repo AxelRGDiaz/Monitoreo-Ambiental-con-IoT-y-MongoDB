@@ -16,6 +16,11 @@ router.get('/allDoc', (req, res) => {
   res.sendFile('views/allDoc.html', { root: __dirname + '/../public/' });
 });
 
+// Ruta para la página de todos los documentos
+router.get('/grafica', (req, res) => {
+  res.sendFile('views/grafica.html', { root: __dirname + '/../public/' });
+});
+
 // Ruta para la página del mapa
 router.get('/maps', (req, res) => {
   res.sendFile('views/maps.html', { root: __dirname + '/../public/' });

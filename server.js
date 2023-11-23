@@ -3,6 +3,7 @@ const routes = require('./src/routes');
 // Importa los modelos de Mongoose desde models.js
 const { ProyectoModel } = require('./src/models');
 const httpServer = require('http').createServer(app);
+const moment = require('moment')
 const io = require('socket.io')(httpServer, {
   cors: {
     origin: "*",
@@ -29,8 +30,10 @@ io.on('connection', (socket) => {
         console.error('Error al obtener el último documento:', error);
       });
   });
-
-  // Puedes agregar más lógica aquí para manejar otros eventos de socket si es necesario
+  socket.on('graficarDatos', (datos) => {
+    // Emitir el evento a la vista de gráficos
+    io.emit('graficarDatos', datos);
+  });
 });
 
 // Pasa el servidor HTTP a la aplicación para que socket.io pueda interceptar solicitudes HTTP

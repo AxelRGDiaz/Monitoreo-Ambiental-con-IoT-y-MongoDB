@@ -2,7 +2,7 @@ const mqtt = require('mqtt');
 
 // Configuración del broker MQTT
 const brokerUrl = 'ws://test.mosquitto.org:8080/mqtt'; // Cambia esto al broker MQTT que estés utilizando
-const topic = 'Clatua/sensor'; // Ajusta el tema MQTT según tu configuración
+const topic = '/Clatua'; // Ajusta el tema MQTT según tu configuración
 
 // Importar el modelo de Mongoose
 const ProyectoModel = require('./models').ProyectoModel;
@@ -26,7 +26,7 @@ client.on('connect', () => {
 
 // Manejar mensajes recibidos
 client.on('message', async (topic, message) => {
-  if (topic === 'Clatua/sensor') {
+  if (topic === '/Clatua') {
     const sensor = JSON.parse(message.toString());
     console.log('Mensaje recibido desde el topic clatua:');
     console.log(sensor);
@@ -37,13 +37,21 @@ client.on('message', async (topic, message) => {
     try {
       // Guardar el nuevo documento en la colección
       await nuevoDocumento.save();
-
+      const io = require('./config').app.io;
+      // Emitir datos para la gráfica
+      io.emit('graficarDatos', sensor);
       // Emitir un evento de socket cuando se agrega un nuevo documento
-      const io = require('./config').app.io;
+      
       io.emit('nuevoDocumento', { message: 'Nuevo documento agregado', nuevoDocumento: sensor });
+
+      
+
     } catch (error) {
+
       console.error('Error al agregar el documento:', error);
+      
       const io = require('./config').app.io;
+
       // Emitir un evento de error al cliente
       io.emit('errorAgregarDocumento', { error: 'Error al agregar el documento' });
     }

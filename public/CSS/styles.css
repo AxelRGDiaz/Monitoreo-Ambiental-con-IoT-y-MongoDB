@@ -471,3 +471,9 @@ iframe{
     margin-bottom: 0px;
     margin-left: 0px;
   }
+
+  #myChart {
+	width: 400px;
+	height: 200px;
+    padding: 80px;
+  }

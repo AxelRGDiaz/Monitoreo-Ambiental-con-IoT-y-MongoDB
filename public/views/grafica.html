@@ -1,18 +1,20 @@
+<!-- grafica.html -->
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet">
-    <link rel="icon" href="IMG/low-negro-sinFondo.png" type="image/x-icon">
+    <title>Gráfica de Datos</title>
+    <link rel="stylesheet" href="../CSS/styles.css">
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    <link rel="stylesheet" href="CSS/styles.css">
-    <title>Monitoreo Ambiental</title>
+    <!-- Incluye las bibliotecas necesarias para la creación de gráficos -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Agrega Moment.js en el encabezado de tu HTML -->
+    <script src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
 </head>
-
 <body>
-
     <script src="JS/style.js"></script>
     <header>
         <div class="menu-container">
@@ -45,6 +47,9 @@
         </div>
     </header>
     <script src="JS/style.js"></script>
-</body>
+    <!-- Contenedor para la gráfica -->
+    <canvas id="myChart"></canvas>
 
+    <script src="../JS/grafic.js"></script>
+</body>
 </html>
