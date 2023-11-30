@@ -55,9 +55,9 @@ router.get('/obtenerP', async (req, res) => {
 
 // Ruta para agregar un documento a la colección "Proyecto"
 router.post('/agregarP', async (req, res) => {
-  const { temperature, humedad, co2, movement, day, time } = req.body;
+  const { temperature, humidity, CO2, movimiento,hora, minuto, segundo, dia, mes, año } = req.body;
   try {
-    const nuevoDocumento = new ProyectoModel({ temperature, humedad, co2, movement, day, time });
+    const nuevoDocumento = new ProyectoModel({ temperature, humidity, CO2, movimiento,hora, minuto, segundo, dia, mes, año });
     await nuevoDocumento.save();
     const io = req.app.io;
     // Emitir evento de socket cuando se agrega un nuevo documento

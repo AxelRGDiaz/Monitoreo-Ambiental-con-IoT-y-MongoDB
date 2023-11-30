@@ -10,10 +10,10 @@ document.addEventListener("DOMContentLoaded", () => {
         if (elementoEditado) {
             // Actualizar el contenido del elemento con los nuevos datos
             elementoEditado.querySelector('.temperature-level').textContent = `${data.updatedData.temperature}°C`;
-            elementoEditado.querySelector('p:nth-child(2)').textContent = `Humedad: ${data.updatedData.humedad}`;
-            elementoEditado.querySelector('p:nth-child(3)').textContent = `CO2: ${data.updatedData.co2}`;
-            elementoEditado.querySelector('p:nth-child(4)').textContent = `Movimiento: ${data.updatedData.movement}`;
-            elementoEditado.querySelector('p:nth-child(5)').textContent = `Fecha: ${data.updatedData.day} Hora: ${data.updatedData.time}`;
+            elementoEditado.querySelector('p:nth-child(2)').textContent = `Humedad: ${data.updatedData.humidity}`;
+            elementoEditado.querySelector('p:nth-child(3)').textContent = `CO2: ${data.updatedData.CO2}`;
+            elementoEditado.querySelector('p:nth-child(4)').textContent = `Movimiento: ${data.updatedData.movimiento}`;
+            elementoEditado.querySelector('p:nth-child(5)').textContent = `Fecha: ${data.updatedData.dia}/${data.updatedData.mes}/${data.updatedData.año} Hora: ${data.updatedData.hora}:${data.updatedData.minuto}:${data.updatedData.segundo}`;
         }
     });
 
@@ -59,20 +59,24 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Agregar el resto de la información del nuevo documento
         const humi = document.createElement("p");
-        humi.textContent = `Humedad: ${data.nuevoDocumento.humedad}`;
+        humi.textContent = `Humedad: ${data.nuevoDocumento.humidity}`;
         dataItem.appendChild(humi);
 
         const co2 = document.createElement("p");
-        co2.textContent = `CO2: ${data.nuevoDocumento.co2}`;
+        co2.textContent = `CO2: ${data.nuevoDocumento.CO2}`;
         dataItem.appendChild(co2);
 
         const movement = document.createElement("p");
-        movement.textContent = `Movimiento: ${data.nuevoDocumento.movement}`;
+        movement.textContent = `Movimiento: ${data.nuevoDocumento.movimiento}`;
         dataItem.appendChild(movement);
 
-        const fechaHora = document.createElement("p");
-        fechaHora.textContent = `Fecha: ${data.nuevoDocumento.day} Hora: ${data.nuevoDocumento.time}`;
-        dataItem.appendChild(fechaHora);
+        const fecha = document.createElement("p");
+        fecha.textContent = `Fecha: ${data.nuevoDocumento.dia}/${data.nuevoDocumento.mes}/${data.nuevoDocumento.año}`;
+        dataItem.appendChild(fecha);
+
+        const Hora = document.createElement("p");
+        Hora.textContent = ` Hora: ${data.nuevoDocumento.hora}:${data.nuevoDocumento.minuto}:${data.nuevoDocumento.segundo}`;
+        dataItem.appendChild(Hora);
 
         // Agregar el nuevo documento al contenedor de datos
         dataContainer.appendChild(dataItem);
@@ -114,23 +118,29 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
                 const humi = document.createElement("p");
-                humi.textContent = `Humedad: ${item.humedad}`;
+                humi.textContent = `Humedad: ${item.humidity}`;
                 dataItem.appendChild(humi);
 
                 const co2 = document.createElement("p");
-                co2.textContent = `CO2: ${item.co2}`;
+                co2.textContent = `CO2: ${item.CO2}`;
                 dataItem.appendChild(co2);
 
+                let movimientoN
+                if(item.movimiento== 0){
+                     movimientoN='NO'
+                }else {
+                    movimientoN = 'SI'
+                }
                 const movement = document.createElement("p");
-                movement.textContent = `Movimiento: ${item.movement}`;
+                movement.textContent = `Movimiento: ${movimientoN}`;
                 dataItem.appendChild(movement);
 
                 const fecha = document.createElement("p");
-                fecha.textContent = `Fecha: ${item.day} `;
+                fecha.textContent = `Fecha: ${item.dia}/${item.mes}/${item.año} `;
                 dataItem.appendChild(fecha);
 
                 const Hora = document.createElement("p");
-                Hora.textContent = ` Hora: ${item.time}`;
+                Hora.textContent = ` Hora: ${item.hora}:${item.minuto}:${item.segundo}`;
                 dataItem.appendChild(Hora);
 
                 dataContainer.appendChild(dataItem);

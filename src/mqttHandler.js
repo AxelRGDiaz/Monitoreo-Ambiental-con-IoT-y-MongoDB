@@ -2,7 +2,7 @@ const mqtt = require('mqtt');
 
 // Configuración del broker MQTT
 const brokerUrl = 'ws://test.mosquitto.org:8080/mqtt'; // Cambia esto al broker MQTT que estés utilizando
-const topic = '/Clatua'; // Ajusta el tema MQTT según tu configuración
+const topic = 'Clatua/sensor'; // Ajusta el tema MQTT según tu configuración
 
 // Importar el modelo de Mongoose
 const ProyectoModel = require('./models').ProyectoModel;
@@ -26,7 +26,7 @@ client.on('connect', () => {
 
 // Manejar mensajes recibidos
 client.on('message', async (topic, message) => {
-  if (topic === '/Clatua') {
+  if (topic === topic) {
     const sensor = JSON.parse(message.toString());
     console.log('Mensaje recibido desde el topic clatua:');
     console.log(sensor);

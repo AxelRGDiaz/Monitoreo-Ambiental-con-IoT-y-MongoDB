@@ -31,23 +31,29 @@ document.addEventListener("DOMContentLoaded", () => {
         dataItem.appendChild(temperatureBar);
 
         const humi = document.createElement("p");
-        humi.textContent = `Humedad: ${documento.humedad}`;
+        humi.textContent = `Humedad: ${documento.humidity}`;
         dataItem.appendChild(humi);
 
         const co2 = document.createElement("p");
-        co2.textContent = `CO2: ${documento.co2}`;
+        co2.textContent = `CO2: ${documento.CO2}`;
         dataItem.appendChild(co2);
 
         const movement = document.createElement("p");
-        movement.textContent = `Movimiento: ${documento.movement}`;
+        let movimientoN
+        if(documento.movimiento == 0){
+             moviemientoN='NO'
+        }else {
+            movimientoN = 'SI'
+        }
+        movement.textContent = `Movimiento: ${moviemientoN}`;
         dataItem.appendChild(movement);
 
         const fecha = document.createElement("p");
-        fecha.textContent = `Fecha: ${documento.day}`;
+        fecha.textContent = `Fecha: ${documento.dia}/${documento.mes}/${documento.año}`;
         dataItem.appendChild(fecha);
 
         const Hora = document.createElement("p");
-        Hora.textContent = `Hora: ${documento.time}`;
+        Hora.textContent = `Hora: ${documento.hora}:${documento.minuto}:${documento.segundo}`;
         dataItem.appendChild(Hora);
 
         // Agregar el nuevo documento al contenedor

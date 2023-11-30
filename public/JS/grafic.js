@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const formattedDate = moment(datos.time).format('YYYY-MM-DD HH:mm:ss');
     
         myChart.data.labels.push(formattedDate);
-        myChart.data.datasets[0].data.push(datos.Luminucidad);
+        myChart.data.datasets[0].data.push(datos.temperature,datos.CO2,datos.humidity);
         myChart.update();
     });
 });
