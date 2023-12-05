@@ -84,7 +84,7 @@ function initMap() {
     marker.addListener('mouseover', function () {
         // Hacer una solicitud AJAX a tu API
         $.ajax({
-            url: 'http://localhost:3000/obtenerUltimoDocumento ' && 'http://192.168.0.15:3000/obtenerUltimoDocumento', // URL de tu API
+            url: 'http://localhost:3000/obtenerUltimoDocumento ' && 'https://2fc60p1f-3000.usw3.devtunnels.ms/obtenerUltimoDocumento', // URL de tu API
             method: 'GET',
             success: function (data) {
                 // Construir el contenido del InfoWindow con los datos de la API
@@ -117,7 +117,7 @@ function initMap() {
     markerDos.addListener('mouseover', function () {
         // Hacer una solicitud AJAX a tu API
         $.ajax({
-            url: 'http://localhost:3000/obtenerUltimoDocumento ' && 'http://192.168.0.15:3000/obtenerUltimoDocumento', // URL de tu API
+            url: 'http://localhost:3000/obtenerUltimoDocumento ' && 'https://2fc60p1f-3000.usw3.devtunnels.ms/obtenerUltimoDocumento', // URL de tu API
             method: 'GET',
             success: function (data) {
                 // Construir el contenido del InfoWindow con los datos de la API
@@ -149,7 +149,7 @@ function initMap() {
     markerTres.addListener('mouseover', function () {
         // Hacer una solicitud AJAX a tu API
         $.ajax({
-            url: 'http://localhost:3000/obtenerUltimoDocumento ' && 'http://192.168.0.15:3000/obtenerUltimoDocumento', // URL de tu API
+            url: 'http://localhost:3000/obtenerUltimoDocumento ' && 'https://2fc60p1f-3000.usw3.devtunnels.ms/obtenerUltimoDocumento', // URL de tu API
             method: 'GET',
             success: function (data) {
                 // Construir el contenido del InfoWindow con los datos de la API
@@ -179,11 +179,11 @@ function initMap() {
     });
 
     // Mostrar el InfoWindow cuando se carga el mapa
-    infoWindow.open(map, marker,infoWindowDos.open(map, markerDos),infoWindowTres.open(map, markerTres));
-    // // Mostrar el InfoWindow cuando se carga el mapa
-    // infoWindowDos.open(map, markerDos);
-    // // Mostrar el InfoWindow cuando se carga el mapa
-    // infoWindowTres.open(map, markerTres);
+    infoWindow.open(map, marker);
+    // Mostrar el InfoWindow cuando se carga el mapa
+    infoWindowDos.open(map, markerDos);
+    // Mostrar el InfoWindow cuando se carga el mapa
+    infoWindowTres.open(map, markerTres);
 
 
 

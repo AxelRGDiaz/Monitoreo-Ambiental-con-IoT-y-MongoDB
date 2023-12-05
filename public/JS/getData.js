@@ -73,7 +73,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Realizar una solicitud para obtener el último documento desde el servidor
     // && 'https://2fc60p1f-3000.usw3.devtunnels.ms/obtenerUltimoDocumento'
-    fetch('http://localhost:3000/obtenerUltimoDocumento' )
+    fetch('http://localhost:3000/obtenerUltimoDocumento' && 'https://2fc60p1f-3000.usw3.devtunnels.ms/obtenerUltimoDocumento' )
         .then((response) => response.json())
         .then((data) => {
             renderizarDocumento(data);
